@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* 이벤트 카드 컨테이너 */
+.event-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px; /* 아이템 간의 간격을 줄임 */
+	justify-content: center; /* 컨테이너 내 아이템을 가운데 정렬 */
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
+
+/* 각 카드의 플렉스 아이템 스타일 */
+.event-container .dataRow {
+	flex: 1 1 calc(25% - 12px); /* 카드 크기를 줄이기 위해 비율 조정 */
+	max-width: calc(25% - 12px); /* 카드 크기 조정 */
+	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+	overflow: hidden; /* 콘텐츠가 테두리 내에 맞도록 설정 */
+	
+}
+
+/* 카드 호버 효과 */
+.event-container .dataRow:hover {
+	transform: translateY(-8px); /* 호버 시 카드 살짝 위로 이동 */
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 강조 */
+}
+
+/* 이미지가 카드 영역을 가득 채우도록 설정 */
+.imageDiv {
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.imageDiv img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 잘리지 않도록 설정 */
+}
+
+/* 작은 화면에 대한 반응형 디자인 */
+@media (max-width: 768px) {
+	.event-container .dataRow {
+		flex: 1 1 calc(50% - 12px); /* 화면이 좁을 때 카드 크기 조정 */
+		max-width: calc(50% - 12px); /* 화면이 좁을 때 카드 크기 조정 */
+	}
+}
+
+@media (max-width: 480px) {
+	.event-container .dataRow {
+		flex: 1 1 100%; /* 화면이 매우 좁을 때 카드가 전체 너비를 차지하도록 설정 */
+		max-width: 100%; /* 카드가 전체 너비를 차지하도록 설정 */
+	}
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>webjjang_servlet</display-name>
+  <welcome-file-list>
+    <welcome-file>main.do</welcome-file>    
+  </welcome-file-list>
+  <!-- Servlet 등록 - servlet & servlet-mapping -->
+  <servlet>
+  	<description>설명 : FrontController 역할 - DispatcharServlet 등록</description>
+  	<servlet-name>dispatcharServlet</servlet-name>
+  	<servlet-class>com.interyard.main.controller.DispatcharServlet</servlet-class>
+  	<!-- 서버가 실행될 때 확인해 주세요 - init()가 실행 -->
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>dispatcharServlet</servlet-name>
+  	<url-pattern>*.do</url-pattern>     		
+  </servlet-mapping>  
+  
+  
+  
+  <filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>	
+	
+	
+	
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>com.interyard.util.filter.EncodingFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>authority</filter-name>
+		<filter-class>com.interyard.util.filter.AuthorityFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>authority</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>updateConDateFilter</filter-name>
+		<filter-class>com.interyard.util.filter.UpdateConDateFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>updateConDateFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	<!-- 예외와 에러 처리 error-page tag 설정
+	 -error-code : 브라우저나 통신에서 보여지는 에러 코드로 서버에서 처리
+	 -exception-type : 내부 오류인 500의 Exception의 종류의 따라 처리  -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error/nomodule404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/error/nomodule500.jsp</location>
+	</error-page>
+</web-app>

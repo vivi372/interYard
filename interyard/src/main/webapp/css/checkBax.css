@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+ 	background-color: black;
+    border-color: black;   
+}
