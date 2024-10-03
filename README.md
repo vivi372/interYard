@@ -10,8 +10,6 @@
 
 # 프로젝트 소개
 
-
-
 이 프로젝트는 포트폴리오 목적으로 제작된 도서, 티켓, 각종 상품을 판매하는 가상 쇼핑몰입니다. 
 
 실제 서비스를 염두에 두기보다는, 다양한 기능을 구현하고 풀스택 개발 역량을 보여주기 위해 개발되었습니다.
@@ -37,9 +35,17 @@
 # 기술 스택
 
 <div align=center>
-  <img src="https://img.shields.io/badge/java-ff1a1a?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/java-ff1a1a?style=for-the-badge&logo=JAVA&logoColor=white">
   <img src="https://img.shields.io/badge/servlet-ff6666?style=for-the-badge&logo=servlet&logoColor=white">
-  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
-  
+  <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white">
+  <br>
+  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">  
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">  
 </div>
+
+# 화면 구성
+
+
   
