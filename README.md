@@ -36,4 +36,10 @@
 
 # 기술 스택
 
+<div align=center>
+  <img src="https://img.shields.io/badge/java-ff1a1a?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/servlet-ff6666?style=for-the-badge&logo=servlet&logoColor=white">
+  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
+  
+</div>
   
