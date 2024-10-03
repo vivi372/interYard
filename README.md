@@ -88,3 +88,40 @@
 + ajax를 사용해 비동기 방식으로 배송지 관련 CRUD를 구현해 결제시 입력한 데이터를 유지시킨 상태로 배송지 등록,수정,삭제가 가능
 + 책 같은 경우 ISBN이 존재하고 티켓은 관람일이 필요하기 때문에 주문 데이터 출력시 다른 정보를 출력이 가능
 + 상품의 옵션이 존재할 경우 여러개의 옵션이 선택이 가능
+
+# 중요 코드
+
+```
+//basketOpt 테이블의 데이터를 수정하는 퀴리문을 가져오는 메서드
+	private String getOptUpdateSql(List<OptVO> optList) {
+		//옵션 테이블에서 수정할 장바구니의 번호를 가져온다.
+		long basketNo = optList.get(0).getBasketNo();
+		//MERGE INTO targetTable using(sourceTable) on 조건 WHEN MATCHED THEN update/delete  WHEN NOT MATCHED THEN insert
+		//- targetTable과  sourceTable 테이블을 조건을 통해 비교하여 조건에 맞으면 업데이트나 삭제를 진행하고 틀리면 등록한다.
+		String sql ="MERGE INTO basketOpt t "
+				+ "		USING ( ";
+		//가져온 옵션 리스트로 sourceTable 생성
+		for(int i=0;i<optList.size();i++) {
+			OptVO opt = optList.get(i);
+			if(i==0) sql += "select "+(i+1)+" rnum, "+opt.getOptNo()+" optNo, "+opt.getAmount()+" amount, "+basketNo+" basketNo from dual ";
+			else sql += " union all select "+(i+1)+", "+opt.getOptNo()+", "+opt.getAmount()+", "+basketNo+" from dual ";
+		}
+		sql +=" ) s "
+				//입력된 basketNo인 타겟 테이블의 순서번호가 소스테이블에 존재하면 소스테이블에 데이터를 타켓 테이블에 집어넣고
+			+ " ON (s.rnum = (select rnum from(select rownum rnum,basketOptno from basketOpt where basketNo = "+basketNo+") where basketOptno = t.basketOptNo) and t.basketNo = "+basketNo+") "
+			+ " WHEN MATCHED THEN "
+			+ "    UPDATE SET t.optNo = s.optNo, t.amount = s.amount "
+			//존재하지 않으면 소스테이블에 데이터를 basketOpt에서 새로 등록한다.
+			+ " WHEN NOT MATCHED THEN "
+			+ "    INSERT (basketOptNo, optNo, amount, basketNo) "
+			+ "    VALUES (basketOpt_seq.nextval, s.optNo, s.amount, "+basketNo+")";
+		
+		return sql;
+	}
+
+```
+
+장바구니의 옵션 수정시 기존의 테이블의 옵션 데이터와 입력된 옵션 테이블의 행의 수를 비교하여 
+
+입력된 테이블의 행이 더 많으면 그만큼 새로 insert하고 존재하는 행들은 update한다.
+
