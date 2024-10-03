@@ -53,5 +53,38 @@
 
 # 화면 구성
 
-### 장바구니
+<details>
   
+<summary>장바구니</summary>
+
++ 장바구니 리스트
+<img src="readmeAssets/장바구니 리스트.png" width="600" style="">
+
++ 장바구니 등록
+<img src="readmeAssets/장바구니 등록.png" width="600" style="">
+
+</details>
+
+<details>
+  
+<summary>주문관리</summary>
+
++ 주문 리스트
+<img src="readmeAssets/주문 리스트.png" width="600" style="">
+
++ 주문 등록
+<img src="readmeAssets/주문 등록.png" width="600" style="">
+
++ 배송지 리스트
+<img src="readmeAssets/배송지 리스트.png" width="600" style="">
+
++ 주문 관리 페이지
+<img src="readmeAssets/주문 관리 페이지.png" width="600" style="">
+
+</details>
+
+# 주요 기능
+
++ ajax를 사용해 비동기 방식으로 배송지 관련 CRUD를 구현해 결제시 입력한 데이터를 유지시킨 상태로 배송지 등록,수정,삭제가 가능
++ 책 같은 경우 ISBN이 존재하고 티켓은 관람일이 필요하기 때문에 주문 데이터 출력시 다른 정보를 출력이 가능
++ 상품의 옵션이 존재할 경우 여러개의 옵션이 선택이 가능
